@@ -4,9 +4,7 @@ import Layout from './components/Layout';
 import LandingPage from './pages/LandingPage';
 
 import GenerateRoadmap from './pages/GenerateRoadmap';
-import SkillGapAnalysis from './pages/SkillGapAnalysis';
 import ResumeAnalyzer from './pages/ResumeAnalyzer';
-import LearningProgress from './pages/LearningProgress';
 
 function App() {
   return (
@@ -18,9 +16,7 @@ function App() {
         {/* Dashboard layout routes */}
         <Route path="/" element={<Layout />}>
           <Route path="roadmap" element={<GenerateRoadmap />} />
-          <Route path="analysis" element={<SkillGapAnalysis />} />
           <Route path="resume" element={<ResumeAnalyzer />} />
-          <Route path="progress" element={<LearningProgress />} />
         </Route>
       </Routes>
     </BrowserRouter>

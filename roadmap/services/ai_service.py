@@ -16,13 +16,29 @@ client = genai.Client(
 )
 
 
-def generate_ai_roadmap(prompt):
+import time
 
-    response = client.models.generate_content(
+def generate_ai_roadmap(prompt, max_retries=2):
 
-        model="gemini-2.0-flash",
+    for attempt in range(max_retries):
 
-        contents=prompt
-    )
+        try:
 
-    return response.text
+            response = client.models.generate_content(
+                model="gemini-2.0-flash",
+                contents=prompt
+            )
+
+            return response.text
+
+        except Exception as error:
+            
+            error_str = str(error)
+
+            # If it's a rate limit error and we have retries left
+            if "429" in error_str and attempt < max_retries - 1:
+                print(f"API Rate limit hit (429). Waiting 12 seconds before retry {attempt + 1}/{max_retries}...")
+                time.sleep(12)
+            else:
+                # Throw error if we're out of retries or it's a different error
+                raise error

@@ -5,9 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
   { name: 'Generate Roadmap', path: '/roadmap', icon: Map },
-  { name: 'Skill Gap', path: '/analysis', icon: Target },
   { name: 'Resume Analyzer', path: '/resume', icon: FileText },
-  { name: 'Progress', path: '/progress', icon: TrendingUp },
 ];
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
@@ -64,13 +62,6 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
             </NavLink>
           ))}
         </nav>
-
-        <div className="p-4 border-t border-slate-200">
-          <button className="flex items-center gap-3 px-3 py-2.5 w-full rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors">
-            <Settings className="w-5 h-5" />
-            Settings
-          </button>
-        </div>
       </motion.aside>
     </>
   );
